@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 protocol PostUpdate : NSObjectProtocol {
     func editedPost(post : Post)
     func deletedPost(post : Post)

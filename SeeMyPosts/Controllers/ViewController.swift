@@ -15,6 +15,10 @@ class ViewController: UIViewController, PostUpdate {
     
     var posts = [Post]()
     var selectedPost : Post?
+    @IBOutlet weak var getPostButton: UIButton!
+    @IBOutlet weak var numberTextFiel: UITextField!
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBAction func getPostButton(_ sender: UIButton) {
         
         let noPosts =  numberTextFiel.text!
@@ -30,13 +34,9 @@ class ViewController: UIViewController, PostUpdate {
         }
         
     }
-    @IBOutlet weak var getPostButton: UIButton!
-    @IBOutlet weak var numberTextFiel: UITextField!
-    @IBOutlet weak var tableView: UITableView!
-    
-    
     
     private let networkingClient = NetworkingClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getPostButton.isEnabled = false
@@ -54,11 +54,6 @@ class ViewController: UIViewController, PostUpdate {
         posts.remove(at: index!)
         tableView.reloadData()
     }
-    
-    func updateData(){
-        
-    }
-    
     
     //Delegates
     @objc func textFieldDidChange(){

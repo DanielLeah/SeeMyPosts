@@ -13,6 +13,7 @@ class DetailViewController : UIViewController {
     @IBOutlet weak var idUserText: UITextField!
     @IBOutlet weak var titleText: UITextField!
     @IBOutlet weak var detailText: UITextView!
+    @IBOutlet weak var editDone: UIButton!
     
     @IBAction func deleteButton(_ sender: Any) {
         //delete and dismiss
@@ -38,18 +39,13 @@ class DetailViewController : UIViewController {
         }
         
     }
-    @IBOutlet weak var editDone: UIButton!
     
     weak var delegate : PostUpdate?
     
-    
     var post : Post!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         updateDetails()
     }
 
