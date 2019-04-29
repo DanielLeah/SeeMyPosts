@@ -42,31 +42,3 @@ extension String {
         return !self.isEmpty && rangeOfCharacter(from: characters) == nil
     }
 }
-
-extension ViewController : UITableViewDelegate, UITableViewDataSource{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = posts[indexPath.row].id.description
-        cell.detailTextLabel?.text = posts[indexPath.row].title
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedPost = posts[indexPath.row]
-        performSegue(withIdentifier: "goToDetails", sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToDetails" {
-            let vc = segue.destination as! DetailViewController
-            guard let selectedPost = selectedPost else {return}
-            vc.post = selectedPost
-            vc.delegate = self
-        }
-    }
-}

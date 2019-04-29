@@ -24,12 +24,13 @@ class DetailViewController : UIViewController {
     }
     @IBAction func edit(_ sender: Any) {
         
-        if editDone.titleLabel?.text == "Done"{
+        if (idUserText.isUserInteractionEnabled == true){
             editDone.setTitle("Edit", for: .normal)
             idUserText.isUserInteractionEnabled = false
             titleText.isUserInteractionEnabled = false
             detailText.isUserInteractionEnabled = false
-            updatePost(Int(idUserText.text!)! , titleText.text!, detailText.text!)
+            guard let idUser = Int(idUserText.text!) else {return}
+            updatePost(idUser, titleText.text!, detailText.text!)
         }else{
             editDone.setTitle("Done", for: .normal)
             idUserText.isUserInteractionEnabled = true
